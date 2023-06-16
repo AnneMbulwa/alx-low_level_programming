@@ -5,10 +5,9 @@
  */
 int main(void)
 {
-	char alp[26];
+	char alp[26] = "abcdefghijklmnopqrstvuwxyz";
 	int a;
 
-	printf("Lowercase alphabets:\n");
 	for (a = 0; a < 26; a++)
 	{
 		putchar(alp[a]);
