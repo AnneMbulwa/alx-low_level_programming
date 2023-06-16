@@ -9,7 +9,7 @@ int main(void)
 	int a;
 
 	printf("Lowercase alphabets:\n");
-	for (a = 'a'; a <= 'z'; a++)
+	for (a = 0; a < 26; a++)
 	{
 		putchar(alp[a]);
 	}
