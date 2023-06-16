@@ -5,12 +5,13 @@
  */
 int main(void)
 {
-	char ch;
+	char alp[26];
+	int a;
 
 	printf("Lowercase alphabets:\n");
-	for (ch = 'a'; ch <= 'z'; ch++)
+	for (a = 'a'; a <= 'z'; a++)
 	{
-		putchar(ch);
+		putchar(alp[a]);
 	}
 	putchar("\n");
 	return (0);
