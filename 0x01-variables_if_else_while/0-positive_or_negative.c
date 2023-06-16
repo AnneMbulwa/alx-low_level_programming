@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-/* main - A program to print if a number is positive,negative or zero 
+/**
+ * main - program that print if a number is positive, negative or zero
  * Return: 0
  */
 int main(void)
@@ -11,17 +12,18 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
-	if (n >5)
+	if (n > 5)
 	{
-		printf(" %d is %d\n",n,"positive");
+		printf(" %d is %d\n", n, "positive");
 	}
-	else if (n <0)
+	else if (n < 0)
 	{
-		printf("%d is %d\n",n,"negative");
+		printf("%d is %d\n", n, "negative");
 	}
 	else
 	{
-		printf("%d is %d\n",n,"zero");
+		printf("%d is %d\n", n, "zero");
+	}
 
 	return (0);
 }
