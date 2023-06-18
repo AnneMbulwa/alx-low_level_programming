@@ -28,7 +28,9 @@ int main(void)
 			}
 			b++;
 		}
+		b = '1';
 		a++;
 	}
-return (0);
+	a = '0';
+	return (0);
 }
