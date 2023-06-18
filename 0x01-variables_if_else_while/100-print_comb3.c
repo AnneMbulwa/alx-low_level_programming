@@ -5,19 +5,18 @@
  */
 int main(void)
 {
-	int a;
-	int b;
+	int a = '0';
+	int b = '0';
 
-	for (a = 0; a <= 9; a++)
+	while (a <= '9')
 	{
-		for (b = 1; b <= 9; b++)
+		while (b <= '9')
 		{
-
 			if (!(a > b) || a == b)
 			{
 				putchar(a);
 				putchar(b);
-				if (a == 8 && b == 9)
+				if (a == '8' && b == '9')
 				{
 					putchar('\n');
 				}
@@ -27,7 +26,10 @@ int main(void)
 					putchar(' ');
 				}
 			}
+			b++;
 		}
+		b = '0';
+		a++;
 	}
 return (0);
 }
