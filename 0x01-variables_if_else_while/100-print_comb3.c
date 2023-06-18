@@ -1,22 +1,27 @@
 #include <stdio.h>
 /**
- * main -  Program that prints all combinations of 2 digits
+ * main -  Program that prints all combinations of two single digits
  * Return: 0
  */
 int main(void)
 {
-	int x;
-	int y;
+	int a;
+	int b;
 
-	for (x = 48; x <= 56; x++)
+	for (a = '0'; a <= '9'; a++)
 	{
-		for (y = 49; y <= 57; y++)
+		for (b = '1'; b <= '9'; b++)
 		{
-			if (y > x)
+
+			if (!(a > b) || a == b)
 			{
-				putchar(x);
-				putchar(y);
-				if (x != 56 && y != 57)
+				putchar(a);
+				putchar(b);
+				if (a == '8' && b == '9')
+				{
+					putchar('\n');
+				}
+				else
 				{
 					putchar(',');
 					putchar(' ');
@@ -24,6 +29,5 @@ int main(void)
 			}
 		}
 	}
-	putchar('\n');
-	return (0);
+return (0);
 }
