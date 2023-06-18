@@ -5,34 +5,29 @@
  */
 int main(void)
 {
-	int k = '0';
-	int b = '0';
-	int m = '0';
+	int k;
+	int b;
+	int m;
 
-	while (k <= '7')
+	for (k = 48; k < 58; k++)
 	{
-		while (b <= '8')
+		for (b = 49; b < 58; b++)
 		{
-			while (m <= '9')
+			for (m = 50; m < 58; m++)
 			{
 				if (k < b && b < k)
 				{
 					putchar(k);
 					putchar(b);
 					putchar(m);
-					if (!(k == '7' && b == '8' && m == '9'))
+					if (k != 55 || b != 56)
 					{
 						putchar(',');
 						putchar(' ');
 					}
 				}
-				m++;
 			}
-			m = '0';
-			b++;
 		}
-		b = '0';
-		k++;
 	}
 	putchar('\n');
 	return (0);
