@@ -5,17 +5,21 @@
  */
 int main(void)
 {
-	int a, b, c;
+	int a;
+	long b = 0, c = 1, sum;
 
-	printf("%d, %d, ", a, b);
-	c = a + b
-	while (c <= 50)
+	for (a = 0; a < 50; a++)
 	{
-		printf("%d, ", c);
-		a = b;
+		sum = b + c;
+		printf("%lu", sum);
+
 		b = c;
-		c = a + b
+		c = sum;
+
+		if (a == 49)
+			printf("\n");
+		else
+			printf(", ");
 	}
-	printf("\n");
 	return (0);
 }
