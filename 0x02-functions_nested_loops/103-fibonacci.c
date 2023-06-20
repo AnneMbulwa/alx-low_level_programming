@@ -5,13 +5,14 @@
  */
 int main(void)
 {
+	int x;
 	int a = 1;
 	int b = 2;
 	long int sum, next;
 
-	while (b + a < 4000000)
+	for (x = 1; x <= 33; ++1)
 	{
-		if (a % 2 == 0)
+		if (a < 4000000 && (a % 2) == 0)
 		{
 			sum = sum + a;
 		}
