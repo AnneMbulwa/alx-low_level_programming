@@ -6,11 +6,13 @@
 int main(void)
 {
 	int x;
-	int a = 1;
-	int b = 2;
-	long int sum, next;
+	long int a, b, sum, next;
 
-	for (x = 1; x <= 33; ++1)
+	a = 1;
+	b = 2;
+	sum = 0;
+
+	for (x = 1; x <= 33; ++x)
 	{
 		if (a < 4000000 && (a % 2) == 0)
 		{
