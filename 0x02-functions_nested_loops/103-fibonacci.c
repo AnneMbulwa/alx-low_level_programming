@@ -9,7 +9,7 @@ int main(void)
 	int b = 2;
 	long int sum, next;
 
-	while (a < 4000000)
+	while (b + a < 4000000)
 	{
 		if (a % 2 == 0)
 		{
