@@ -7,8 +7,7 @@ int main(void)
 {
 	int a = 1;
 	int b = 2;
-
-	sum = 0;
+	long int sum, next;
 
 	while (a < 4000000)
 	{
@@ -16,9 +15,7 @@ int main(void)
 		{
 			sum = sum + a;
 		}
-
-		int next = a + b;
-
+		next = a + b;
 		a = b;
 		b = next;
 	}
