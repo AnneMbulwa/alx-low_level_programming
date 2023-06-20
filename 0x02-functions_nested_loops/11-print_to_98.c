@@ -3,32 +3,30 @@
 /**
  *print_to_98 -  prints all natural numbers
  *@n: computed number
- *
  */
 void print_to_98(int n)
 {
-	for (; n <= 98; n++)
+	int a, b;
+
+	if (n <= 98)
 	{
-		if (n == 98)
+		for (a = n; a <= 98; a++)
 		{
-			printf("%d\n", n);
-			break;
+			if (a != 98)
+				printf("%d, ", a);
+			else if (a == 98)
+				printf("%d\n", a);
 		}
-		else
-		{
-			printf("%d", n);
-		}
+
 	}
-	for (; n >= 98; n--)
+	else if (n >= 98)
 	{
-		if (n == 98)
+		for (b = n; b >= 98; b--)
 		{
-			printf("%d\n", n);
-			break;
-		}
-		else
-		{
-			printf("%d", n);
+			if (b != 98)
+				printf("%d, ", b);
+			else if (b == 98)
+				printf("%d\n", b);
 		}
 	}
 }
