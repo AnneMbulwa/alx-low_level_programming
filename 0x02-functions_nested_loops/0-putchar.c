@@ -1,10 +1,10 @@
-#include <stdio.h>
+#include "main.h"
+#include <unstd.h>
 /**
  * main -  program that prints _putchar
  * Return: 0
  */
-int main(void)
+int _putchar(char c)
 {
-	printf("_putchar");
-	return (0);
+	return (write(1, &c, 1));
 }
