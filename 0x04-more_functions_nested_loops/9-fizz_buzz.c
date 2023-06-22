@@ -1,7 +1,7 @@
 #include "main."
 #include <stdio.h>
 /**
- *main - print FizzBuzz program test
+ *main - Print FizzBuzz program test
  *Return: 0
  */
 int main(void)
@@ -24,13 +24,13 @@ int main(void)
 		}
 		else
 		{
-			printf("%d", a)
+			printf("%d", a);
 		}
 		if (a != 100)
 		{
-			printf(32);
+			printf(" ");
 		}
 	}
-	printf('\n');
+	printf("\n");
 	return (0);
 }
