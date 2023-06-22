@@ -10,27 +10,27 @@ int main(void)
 
 	for (a = 1; a <= 100; a++)
 	{
-		if (a % 3 == 0 && a % 5 == 0)
+		if ((a % 3 == 0) && (a % 5 == 0))
 		{
-			_putchar("FizzBuzz");
+			printf("FizzBuzz");
 		}
 		else if (a % 3 == 0)
 		{
-			_putchar("Fizz");
+			printf("Fizz");
 		}
 		else if (a % 5 == 0)
 		{
-			_putchar("Buzz");
+			printf("Buzz");
 		}
 		else
 		{
-			_putchar("%d", a)
+			printf("%d", a)
 		}
 		if (a != 100)
 		{
-			_putchar(32);
+			printf(32);
 		}
-		_putchar('\n');
 	}
+	printf('\n');
 	return (0);
 }
