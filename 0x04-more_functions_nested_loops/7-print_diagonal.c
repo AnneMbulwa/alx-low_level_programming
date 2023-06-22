@@ -2,7 +2,7 @@
 /**
  *print_diagonal -  draws a diagonal line on the terminal
  *@n: computed number
- *Return: void
+ *Return: empty
  */
 void print_diagonal(int n)
 {
@@ -20,7 +20,8 @@ void print_diagonal(int n)
 			{
 				_putchar(32);
 			}
-		_putchar('\n');
+				_putchar(92);
+				_putchar('\n');
 		}
 	}
 }
