@@ -11,10 +11,11 @@ int _atoi(char *s)
 	int len;
 	int b = 0;
 	int c = 0;
-	int d = 0;
+	int n = 0;
 
 	while (s[len] != '\0')
 		len++;
+
 	while (a < len && b == 0)
 	{
 		if (s[a] == '-')
@@ -24,7 +25,7 @@ int _atoi(char *s)
 			result = s[a] - '0';
 			if (c % 2)
 				result = -result;
-			d = d * 10 + result;
+			n = n * 10 + result;
 			b = 1;
 			if (s[a + 1] < '0' || s[a + 1] > '9')
 				break;
