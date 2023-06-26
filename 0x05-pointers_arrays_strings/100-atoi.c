@@ -8,7 +8,7 @@ int _atoi(char *s)
 {
 	int result = 0;
 	int a = 0;
-	int len;
+	int len = 0;
 	int b = 0;
 	int c = 0;
 	int n = 0;
@@ -29,11 +29,12 @@ int _atoi(char *s)
 			b = 1;
 			if (s[a + 1] < '0' || s[a + 1] > '9')
 				break;
+			b = 0;
 		}
 		a++;
 	}
 	if (b == 0)
 		return (0);
-	return (d);
+	return (n);
 }
 
