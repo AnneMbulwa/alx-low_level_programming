@@ -4,7 +4,7 @@
  *print_buffer - function that prints a buffer.
  *@b: buffer
  *@size: size of buffer
- *Return: 0
+ *Return: no return.
  */
 void print_buffer(char *b, int size)
 {
