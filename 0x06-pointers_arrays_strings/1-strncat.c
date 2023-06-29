@@ -10,7 +10,6 @@ char *_strncat(char *dest, char *src, int n)
 {
 	int a = 0;
 	int b = 0;
-	int n;
 
 	while (dest[a] != '\0')
 	{
