@@ -29,7 +29,7 @@ void print_buffer(char *b, int size)
 			printf(" ");
 			for (d = a; d < a + 10; d++)
 			{
-				if (d > size)
+				if (d >= size)
 					break;
 				if (*(b + d) < 32 || *(b + d) > 126)
 					printf("%c", '.');
