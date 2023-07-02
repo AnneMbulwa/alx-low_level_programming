@@ -10,7 +10,7 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int a = 0, b = 0, digits = 0, l = 0, k, f, s;
+	int a = 0, b = 0, d = 0, l = 0, k, f, s;
 
 	while (n1[a] != '\0')
 		a++;
@@ -28,24 +28,24 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		a--;
 		b--;
 		if (a >= 0)
-			f = n1[a] - '\0';
+			f = n1[a] - '0';
 		else
 			f = 0;
 		if (b >= 0)
-			s = n2[b] - '\0';
+			s = n2[b] - '0';
 		else
 			s = 0;
-		r[k] = (f + s + digits) % 10 + '\0';
-		digits = (f + s + digits) / 10;
+		r[k] = (f + s + d) % 10 + '0';
+		d = (f + s + d) / 10;
 	}
-	if (digits == 1)
+	if (d == 1)
 	{
-		r[l + 1] = '\0';
+		r[l + 1] = '0';
 		if (l + 2 > size_r)
 			return (0);
 		while (l-- >= 0)
 			r[l + 1] = r[l];
-		r[0] = digits + '\0';
+		r[0] = d + '0';
 	}
 	return (r);
 }
