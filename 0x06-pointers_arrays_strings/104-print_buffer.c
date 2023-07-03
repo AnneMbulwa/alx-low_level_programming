@@ -8,7 +8,7 @@
  */
 void print_buffer(char *b, int size)
 {
-	int o, y, z;
+	int o, j, i;
 
 	o = 0;
 	if (size <= 0)
@@ -18,22 +18,22 @@ void print_buffer(char *b, int size)
 	}
 	while (o < size)
 	{
-		y = size - o < 10 ? size - o : 10;
+		j = size - o < 10 ? size - o : 10;
 		printf("%08x: ", o);
-		for (z = 0; z < 10; z++)
+		for (i = 0; i < 10; i++)
 		{
-			if (z < y)
-				printf("%02x", *(b + o + z));
+			if (i < j)
+				printf("%02x", *(b + o + i));
 			else
 				printf(" ");
-			if (z % 2)
+			if (i % 2)
 			{
 				printf(" ");
 			}
 		}
-		for (z = 0; z < y; z++)
+		for (i = 0; i < j; i++)
 		{
-			int c = *(b + o + z);
+			int c = *(b + o + i);
 
 			if (c < 32 || c > 132)
 			{
