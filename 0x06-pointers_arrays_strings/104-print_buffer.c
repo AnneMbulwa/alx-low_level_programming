@@ -4,7 +4,7 @@
  *print_buffer - function that prints a buffer.
  *@b: buffer
  *@size: size of buffer
- *Return: no return.
+ *Return: no return
  */
 void print_buffer(char *b, int size)
 {
@@ -31,7 +31,7 @@ void print_buffer(char *b, int size)
 			{
 				if (d >= size)
 					break;
-				if (*(b + d) < 32 || *(b + d) > 132)
+				if (*(b + d) < 32 || *(b + d) > 126)
 					printf("%c", '.');
 				else
 					printf("%c", *(b + d));
