@@ -27,7 +27,6 @@ void print_buffer(char *b, int size)
 			{
 				while (++j <= i + 10)
 					printf(" ");
-
 				printf(" ");
 			}
 		}
