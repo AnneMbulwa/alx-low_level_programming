@@ -12,23 +12,23 @@ int main(int argc, char *argv[])
 	int a;
 	unsigned int b;
 	int results = 0;
-	char *e;
+	char *s;
 
 	if (argc > 1)
 	{
 		for (a = 1; a < argc; a++)
 		{
-			e = argv[a];
-			for (b = 0; b < strlen(e); b++)
+			s = argv[a];
+			for (b = 0; b < strlen(s); b++)
 			{
-				if (e[b] < 48 || e[b] > 57)
+				if (s[b] < 48 || s[b] > 57)
 				{
 					printf("Error\n");
 					return (1);
 				}
 			}
-			results += atoi(e);
-			e++;
+			results += atoi(s);
+			s++;
 		}
 		printf("%d\n", results);
 	}
