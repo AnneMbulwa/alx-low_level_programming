@@ -43,7 +43,7 @@ char **strtow(char *str)
 	words = count_word(str);
 	if (words == 0)
 		return (NULL);
-	array = (char **)malloc(sizeof(char) * (words + 1));
+	array = (char **)malloc(sizeof(char *) * (words + 1));
 	if (array == NULL)
 		return (NULL);
 	for (i = 0; i <= len; i++)
