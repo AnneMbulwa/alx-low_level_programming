@@ -4,16 +4,15 @@
 /**
  *print_all - function that prints anything
  *@format: list of all arguments passed
- *...: variables to be printed
  */
 void print_all(const char * const format, ...)
 {
-	char *ptr, *separator = "";
 	int i = 0;
+	char *ptr, *sep = "";
 
-	va_list all;
+	va_list list;
 
-	va_start(all, format);
+	va_start(list, format);
 	if (format)
 	{
 		while (format[i])
@@ -21,28 +20,28 @@ void print_all(const char * const format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					printf("%s%c", separator, va_arg(all, int));
+					printf("%s%c", sep, va_arg(list, int));
 					break;
 				case 'i':
-					printf("%s%d", separator, va_arg(all, int));
+					printf("%s%d", sep, va_arg(list, int));
 					break;
 				case 'f':
-					printf("%s%f", separator, va_arg(all, double));
+					printf("%s%f", sep, va_arg(list, double));
 					break;
 				case 's':
-					ptr = va_arg(all, char *);
+					ptr = va_arg(list, char *);
 					if (!ptr)
 						ptr = "(nil)";
-					printf("%s%s", separator, ptr);
+					printf("%s%s", sep, ptr);
 					break;
 				default:
 					i++;
 					continue;
 			}
-			separator = ",";
+			sep = ",";
 			i++;
 		}
 	}
 	printf("\n");
-	va_end(all);
+	va_end(list);
 }
