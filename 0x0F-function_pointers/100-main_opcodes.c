@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
 	{
 		if (i == bytes - 1)
 		{
-			printf("%02hhx\n", opcodes[i]);
+			printf("%02hhx\n ", opcodes[i]);
 			break;
 		}
-		printf("%02hhx", opcodes[i]);
+		printf("%02hhx ", opcodes[i]);
 	}
 	return (0);
 }
