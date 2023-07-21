@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 
+int atoi(char *);
 /**
  *main - adds 2 positive numbers
  *@argc: number of arguments
@@ -12,7 +13,7 @@ int main(int argc, char *argv[])
 	int i, j, k, num;
 	int results = 0;
 
-	if (argc == 1)
+	if (argc == 0)
 		printf("0\n");
 	for (i = 1; i < argc; i++)
 	{
