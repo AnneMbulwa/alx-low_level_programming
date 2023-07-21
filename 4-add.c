@@ -1,28 +1,5 @@
 #include <stdio.h>
-#include <ctype.h>
 #include "main.h"
-#include <string.h>
-
-int check_num(char *str);
-/**
- *check_num - check if number contain a symbol
- *@str: array string
- *Return: 0
- */
-int check_num(char *str)
-{
-	unsigned int i = 0;
-
-	while (i < strlen(str))
-	{
-		if (!isdigit(str[i]))
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
 
 /**
  *main - adds 2 positive numbers
@@ -32,25 +9,27 @@ int check_num(char *str)
  */
 int main(int argc, char *argv[])
 {
-	int i = 1;
-	int b;/*string to int*/
+	int i, j, k, num;
 	int results = 0;
 
-	while (i < argc)
+	if (argc == 1)
+		printf("0\n");
+	for (i = 1; i < argc; i++)
 	{
-		if (check_num(argv[i]))
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			b = atoi(argv[i]);
-			results += b;
+			if (argv[i][j] > '9' || argv[i][j] < '0')
+			{
+				printf("%s\n", "Error");
+				return (1);
+			}
 		}
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
-		i++;
+	}
+	for (k = 1; k < argc; k++)
+	{
+		num = atoi(argv[k]);
+		results += num;
 	}
 	printf("%d\n", results);
-
 	return (0);
 }
