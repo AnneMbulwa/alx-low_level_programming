@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "main.h"
 
-int atoi(char *);
 /**
  *main - adds 2 positive numbers
  *@argc: number of arguments
