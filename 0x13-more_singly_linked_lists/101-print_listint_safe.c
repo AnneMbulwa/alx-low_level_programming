@@ -1,14 +1,14 @@
 #include "lists.h"
 
-listint_t *find_listint_loop(listint_t *head);
+listint_t *find_listint_loop_y(listint_t *head);
 size_t print_listint_safe(const listint_t *head);
 
 /**
- *find_listint_loop - finds the loop in listint_t
+ *find_listint_loop_y - finds the loop in listint_t
  *@head: pointer to listint_t list
  *Return: address of where loop start or NULL otherwise
  */
-listint_t *find_listint_loop(listint_t *head)
+listint_t *find_listint_loop_y(listint_t *head)
 {
 	listint_t *first, *last;
 
@@ -42,7 +42,7 @@ size_t print_listint_safe(const listint_t *head)
 	int index;
 	listint_t *ptr;
 
-	ptr = find_listint_loop((listint_t *) head);
+	ptr = find_listint_loop_y((listint_t *) head);
 
 	while ((head != ptr || index) && head != NULL)
 	{
