@@ -72,7 +72,7 @@ void print_class(char *ptr)
 		printf("ELF64\n");
 		return (64);
 	}
-	else if (ptr[EI_CLASS] == EELFCLASS32)
+	else if (ptr[EI_CLASS] == ELFCLASS32)
 	{
 		printf("ELF32\n");
 		return (32);
@@ -236,6 +236,9 @@ void close_elf(int m)
  */
 int main(int argc, char *argv[])
 {
+	int y, z;
+	Elf64_Ehdr *temp;
+
 	if (argc != 2)
 	{
 		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
@@ -247,5 +250,33 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
+	temp = malloc(sizeof(Elf64_Ehdr));
+	if (temp == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		return (98);
+	}
+	z = read(y, temp, sizeof(Elf64_Ehdr));
+	if (z == -1)
+	{
+		free(temp);
+		close_elf(y);
+		dprintf(STDERR_FILENO, "Error: `%s`: None\n", argv[1]);
+		exit(98);
+	}
 
+	check_elf(temp->ptr);
+	printf("\n");
+	print_magic(temp->ptr);
+	print_class(temp->ptr);
+	print_data(temp->ptr);
+	print_version(temp->ptr);
+	print_OSABI(temp->ptr);
+	print_abi(temp->ptr);
+	print_type(temp->num, temp->ptr);
+	print_entry(temp->x, temp->ptr);
+
+	free(temp);
+	close_elf(y);
+	return (0);
 }
