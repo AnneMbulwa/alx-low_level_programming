@@ -88,22 +88,13 @@ int main(int argc, char *argv[])
 	do {
 		m = read(file_from, buffer, 1024);
 		if (m == -1)
-		{
-			dprintf(STDERR_FILENO, "Error : Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+			return (read_err(file_from, file_to, argv[1]));
 		n = write(file_to, buffer, m);
-		if (m == -1 || m != n)
-		{
-			dprintf(STDERR_FILENO, "Error : Can't write to %s\n", argv[2]);
-			exit(99);
-		}
-	}
-	while (m == 1024);
-	{
-		close_file(file_from);
-		close_file(file_to);
+		if (n == -1 || n != m)
+			return (write_err(file_from, file_to, argv[2]));
+	} while (m > 0);
+	close_file(file_from);
+	close_file(file_to);
 
-		return (0);
-	}
+	return (0);
 }
