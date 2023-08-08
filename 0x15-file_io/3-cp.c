@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void close_file(int fd);
+int close_file(int fd);
 int write_err(int fd1, int fd2, char *str);
 int read_err(int fd1, int fd2, char *str);
 /**
  *close_file - close file descriptors
  *@fd: file descriptor
  */
-void close_file(int fd)
+int close_file(int fd)
 {
 	int f;
 
@@ -19,7 +19,9 @@ void close_file(int fd)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
+	return (0);
 }
+
 /**
  *write_err - hanndles and prints the write error
  *@fd1: first descriptor
@@ -32,7 +34,7 @@ int write_err(int fd1, int fd2, char *str)
 	dprintf(STDERR_FILENO, "Eroor : Can't write to %s\n", str);
 	close_file(fd1);
 	close_file(fd2);
-	exit(99);
+	return (99);
 }
 
 /**
@@ -47,7 +49,7 @@ int read_err(int fd1, int fd2, char *str)
 	dprintf(STDERR_FILENO, "Error : Can't read from file %s\n", str);
 	close_file(fd1);
 	close_file(fd2);
-	exit(98);
+	return (98);
 }
 
 /**
@@ -64,8 +66,8 @@ int read_err(int fd1, int fd2, char *str)
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
-	char *buffer[1024];
+	int file_from, file_to, f;
+	char buffer[1024];
 	int n, m;
 
 	if (argc != 3)
@@ -83,6 +85,7 @@ int main(int argc, char *argv[])
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		close_file(file_from);
 		exit(99);
 	}
 	do {
@@ -92,9 +95,11 @@ int main(int argc, char *argv[])
 		n = write(file_to, buffer, m);
 		if (n == -1 || n != m)
 			return (write_err(file_from, file_to, argv[2]));
-	} while (m > 0);
-	close_file(file_from);
-	close_file(file_to);
+	} while (m == 1024);
+	f = close_file(file_from);
+	f += close_file(file_to);
+	if (f != 0)
+		return (100);
 
 	return (0);
 }
