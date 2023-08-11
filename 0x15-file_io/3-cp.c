@@ -3,8 +3,9 @@
 #include <stdlib.h>
 
 int close_file(int fd);
-int write_err(int fd1, int fd2, char *str);
-int read_err(int fd1, int fd2, char *str);
+int write_err(int f1, int f2, char *str);
+int read_err(int f1, int f2, char *str);
+char *create_buffer(char *str);
 /**
  *close_file - close file descriptors
  *@fd: file descriptor
@@ -25,46 +26,46 @@ int close_file(int fd)
 
 /**
  *write_err - hanndles and prints the write error
- *@fd1: first descriptor
- *@fd2: second descriptor
+ *@f1: first descriptor
+ *@f2: second descriptor
  *@str: file name
  *Return: 99
  */
-int write_err(int fd1, int fd2, char *str)
+int write_err(int f1, int f2, char *str)
 {
 	dprintf(STDERR_FILENO, "Eroor : Can't write to %s\n", str);
-	close_file(fd1);
-	close_file(fd2);
+	close_file(f1);
+	close_file(f2);
 	exit(99);
 }
 
 /**
  *read_err - handles the read error
- *@fd1: first descriptor
- *@fd2: second descriptor
+ *@f1: first descriptor
+ *@f2: second descriptor
  *@str: file name
  *Return: 98
  */
-int read_err(int fd1, int fd2, char *str)
+int read_err(int f1, int f2, char *str)
 {
 	dprintf(STDERR_FILENO, "Error : Can't read from file %s\n", str);
-	close_file(fd1);
-	close_file(fd2);
+	close_file(f1);
+	close_file(f2);
 	exit(98);
 }
 /**
  *create_buffer - creates buffer that allocates 1024 bytes
- *@ptr: name of file
+ *@str: name of file
  *Return: buffer created
  */
-char *create_buffer(char *ptr)
+char *create_buffer(char *str)
 {
 	char *buf;
 
 	buf = malloc(sizeof(char) * 1024);
 	if (buf == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: can't write into %s\n", ptr);
+		dprintf(STDERR_FILENO, "Error: can't write into %s\n", str);
 		exit(99);
 	}
 	return (buf);
@@ -100,7 +101,7 @@ int main(int argc, char *argv[])
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-		if (file_from == -1)
+		if (file_from == -1 || f == -1)
 		{
 			free(buf);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
