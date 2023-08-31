@@ -2,9 +2,9 @@
 
 /**
  *set_bit - sets value of bit at given index
- *@n: number to print to binary
+ *@n: number to print to binary(base 2)
  *@index: index starting from 0
- *Return: 1 if success or -1 if fails
+ *Return: 1 on success or -1 on fails
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {

@@ -4,7 +4,7 @@
  *clear_bit - sets avalue of bits to 0 at given index
  *@n: number converted to binary
  *@index: index starting from 0
- *Return: 1 if success or -1 otherwise
+ *Return: 1 on success or -1 otherwise
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
