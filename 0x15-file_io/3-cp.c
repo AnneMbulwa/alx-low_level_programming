@@ -1,8 +1,6 @@
 #include "main.h"
 
 int close_file(int fd);
-int write_err(int f1, int f2, char *str);
-int read_err(int f1, int f2, char *str);
 char *create_buffer(char *str);
 
 /**
@@ -23,35 +21,6 @@ int close_file(int fd)
 	return (0);
 }
 
-/**
- *write_err - hanndles and prints the write error
- *@f1: first descriptors
- *@f2: second descriptors
- *@str: file name
- *Return: 99 or 0 on success
- */
-int write_err(int f1, int f2, char *str)
-{
-	dprintf(STDERR_FILENO, "Eroor : Can't write to %s\n", str);
-	close_file(f1);
-	close_file(f2);
-	exit(99);
-}
-
-/**
- *read_err - handles the read error
- *@f1: first descriptors
- *@f2: second descriptors
- *@str: file name
- *Return: 98
- */
-int read_err(int f1, int f2, char *str)
-{
-	dprintf(STDERR_FILENO, "Error : Can't read from file %s\n", str);
-	close_file(f1);
-	close_file(f2);
-	exit(98);
-}
 /**
  *create_buffer - creates buffer that allocates 1024 bytes
  *@str: name of file
@@ -136,6 +105,7 @@ int main(int argc, char *argv[])
 		/*writes into file_to without deleting original content*/
 		file_to = open(argv[2], O_WRONLY | O_APPEND);
 	} while (f > 0);
+
 	free(buf);
 	close_file(file_from);
 	close_file(file_to);
