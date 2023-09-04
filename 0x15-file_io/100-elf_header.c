@@ -1,3 +1,9 @@
+/*format same as readelf -h (version 2.26.1)*/
+
+/*ELF header(Executable and Linkable format*/
+/*used in unix-like O.S for executable/shared libaries & object file*/
+/*Elf header os located at begging of an elf file*/
+
 #include <elf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -19,6 +25,7 @@ void close_elf(int m);
 
 /**
  *check_elf - checks if file is elf or not
+ *helps in distinguishing elf file from others
  *@e_ident: pointer to array containing the magic numbers
  */
 void check_elf(unsigned char *e_ident)
@@ -40,6 +47,7 @@ void check_elf(unsigned char *e_ident)
 
 /**
  *print_magic - prints magic numbers in the ELF headers files
+ *sets bytes to identify files as elf files
  *@e_ident: pointer to array that containg elf magic numbers
  */
 void print_magic(unsigned char *e_ident)
@@ -79,6 +87,9 @@ void print_class(unsigned char *e_ident)
 		printf("unknown: %x>\n", e_ident[EI_CLASS]);
 }
 
+/*endianess - bytes order by which data is sored in computer memory*/
+/*little-endianess and big-endianess*/
+
 /**
  *print_data - determines the endianness of data in file
  *@e_ident: pointer to array containing ELF DATA
@@ -100,7 +111,7 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- *print_version - indicates version of elf format
+ *print_version - indicates version of elf format used
  *@e_ident: pointer to array containing ELF CLASS
  */
 void print_version(unsigned char *e_ident)
@@ -115,11 +126,12 @@ void print_version(unsigned char *e_ident)
 /**
  *print_osabi - identifies the O.P and  ABI of ELF file
  *@e_ident: pointer to array containing ELF CLASS
+ *Description: ABI (application binary interface)
  */
 void print_osabi(unsigned char *e_ident)
 {
 	printf(" OS/ABI:	");
-       	if (e_ident[EI_OSABI] == ELFOSABI_NONE)
+	if (e_ident[EI_OSABI] == ELFOSABI_NONE)
 		printf("UNIX - System V\n");
 	else if (e_ident[EI_OSABI] == ELFOSABI_HPUX)
 		printf("UNIX - HP-UX\n");
@@ -135,7 +147,7 @@ void print_osabi(unsigned char *e_ident)
 		printf("UNIX - FreEBSD\n");
 	else if (e_ident[EI_OSABI] == ELFOSABI_TRU64)
 		printf("UNIX - TRU64\n");
-	else if(e_ident[EI_OSABI] == ELFOSABI_ARM)
+	else if (e_ident[EI_OSABI] == ELFOSABI_ARM)
 		printf("ARM\n");
 	else if (e_ident[EI_OSABI] == ELFOSABI_STANDALONE)
 		printf("Standalone App\n");
@@ -144,8 +156,8 @@ void print_osabi(unsigned char *e_ident)
 }
 
 /**
- *print_abi - specifies the ABI version
- *@e_ident: poniter to array containing ELF CLASS
+ *print_abi - Specifies the ABI version
+ *@e_ident: poniter to unsigned character of array containing ELF CLASS
  */
 void print_abi(unsigned char *e_ident)
 {
@@ -153,9 +165,11 @@ void print_abi(unsigned char *e_ident)
 }
 
 /**
- *print_type - specify type of ELF file
- *@e_type: elf type
- *@e_ident: pointer containg ELF CLASS
+ *print_type - Specify type of ELF file
+ *@e_type: unsigned elf type
+ *@e_ident: pointer to unsigned character of array containg ELF CLASS
+ *Description: types of elf files are executable, shared or relocatable
+ *
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
@@ -178,9 +192,10 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- *print_entry - indicates memory address where program start
- *@e_ident: pointer to array containing ELF CLASS
- *@e_entry: address of ELF entry point
+ *print_entry - Indicates memory address where program start
+ *@e_ident: pointer to unsigned charcacter of array containing ELF CLASS
+ *@e_entry: address of unsigned  ELF entry point
+ *Description: entry point access
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
@@ -201,7 +216,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- *close_elf - closes elf file
+ *close_elf - Closes elf file
  *@m: file desciptor of elf file
  */
 void close_elf(int m)
@@ -213,9 +228,12 @@ void close_elf(int m)
 }
 
 /**
- *main - display info contained in ELF
+*main - Display information(s) contained in ELF
  *@argc: number of arguments
  *@argv: number of array of arguments
+ *Description: use lseek once
+ * use read a maximum of 2 times at runtime
+ * allowed to use printf function
  *Return: 0 on success
  */
 int main(int argc, char *argv[])

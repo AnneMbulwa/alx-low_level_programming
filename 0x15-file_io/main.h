@@ -1,6 +1,7 @@
-#ifndef FILE_H
-#define FILE_H
+#ifndef FILE_IO_H
+#define FILE_IO_H
 
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
