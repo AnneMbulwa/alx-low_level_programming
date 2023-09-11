@@ -2,7 +2,7 @@
 
 /*ELF header(Executable and Linkable format*/
 /*used in unix-like O.S for executable/shared libaries & object file*/
-/*Elf header os located at begging of an elf file*/
+/*Elf header is located at begging of an elf file*/
 
 #include <elf.h>
 #include <sys/types.h>
@@ -260,7 +260,6 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-
 	z = read(y, ptr, sizeof(Elf64_Ehdr));
 	if (z == -1)
 	{
@@ -269,7 +268,6 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-
 	check_elf(ptr->e_ident);
 	printf("ELF Header:\n ");
 	print_magic(ptr->e_ident);
@@ -280,7 +278,6 @@ int main(int argc, char *argv[])
 	print_abi(ptr->e_ident);
 	print_type(ptr->e_type, ptr->e_ident);
 	print_entry(ptr->e_entry, ptr->e_ident);
-
 	free(ptr);
 	close_elf(y);
 	return (0);
