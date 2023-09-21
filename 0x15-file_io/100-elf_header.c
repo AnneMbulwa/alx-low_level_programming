@@ -278,7 +278,6 @@ int main(int argc, char *argv[])
 	print_abi(ptr->e_ident);
 	print_type(ptr->e_type, ptr->e_ident);
 	print_entry(ptr->e_entry, ptr->e_ident);
-	free(ptr);
-	close_elf(y);
+	free(ptr), close_elf(y);
 	return (0);
 }
