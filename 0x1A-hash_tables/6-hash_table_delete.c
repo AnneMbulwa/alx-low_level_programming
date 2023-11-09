@@ -5,14 +5,14 @@
 /*free the elements*/
 
 /**
- *
- *
+ *free_list - frees the linked list chain
+ *@head: pointer to the head node
  */
 void free_list(hash_node_t *head)
 {
 	hash_node_t *val;
 
-	while(head)
+	while (head)
 	{
 		val = head->next;
 		free(head->key);
