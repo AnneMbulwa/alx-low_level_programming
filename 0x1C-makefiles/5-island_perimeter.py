@@ -1,13 +1,14 @@
 #!/usr/bin/python3
+"""calculating the perimeter of an island"""
 
 
 def island_perimeter(grid):
     """
     returns the perimeter of the island described in grid
     Args:
+        grid(list): represents an island measurements-integer
         grid[0]: water
         grid[1]: land
-
     One cell is a square with side length 1
     Grid cells are connected horizontally/vertically (not diagonally)
     Grid is rectangular, width and height don’t exceed 100
